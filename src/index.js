@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MiniEcomerce from './mini-ecomerce';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MiniEcomerce />
   </React.StrictMode>,
   document.getElementById('root')
 );
