@@ -3,8 +3,7 @@ import placeholder from '../../images/royal-trudel-640x427.jpg';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import { render } from "@testing-library/react";
-import { propTypes } from "react-bootstrap/esm/Image";
+
 
 
 function ListarProdutos(props) {
