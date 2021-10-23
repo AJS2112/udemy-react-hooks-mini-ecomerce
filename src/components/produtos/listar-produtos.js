@@ -2,10 +2,12 @@ import React from "react";
 import placeholder from '../../images/royal-trudel-640x427.jpg';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 import { render } from "@testing-library/react";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
-function ListarProdutos() {
+function ListarProdutos(props) {
     const produtos = [
         { nome: 'Aprenda C#', preco: 'R$ 59,99' },
         { nome: 'JavaScript em 24 horas', preco: 'R$ 19,99' },
@@ -20,7 +22,9 @@ function ListarProdutos() {
     function handleComprar(event, produto) {
         event.preventDefault();
         //adicionar o produto
+        props.adicionarProduto(produto);
         //exibir mensagem 
+        props.exibirMensagem(produto);
     }
 
     function render() {
@@ -51,6 +55,11 @@ function ListarProdutos() {
     }
 
     return render();
+}
+
+ListarProdutos.propTypes = {
+    adicionarProduto: PropTypes.func.isRequired,
+    exibirMensagem: PropTypes.func.isRequired
 }
 
 export default ListarProdutos;
