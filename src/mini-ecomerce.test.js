@@ -5,7 +5,7 @@ describe('Test do componente mini-ecomerce', () => {
 
   it('deve renderizar o componente sem erros', () => {
     render(<MiniEcomerce />);
-    const linkElement = screen.getByText(/checkout/i);
+    const linkElement = screen.getByText(/Mini Ecomerce/i);
     expect(linkElement).toBeInTheDocument();
   });
 
