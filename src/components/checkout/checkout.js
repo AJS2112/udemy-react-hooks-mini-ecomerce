@@ -8,6 +8,8 @@ import ListarEstados from './listar-estados';
 import ListarCidades from './listar-cidades';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { validarCpf, formatarCpf } from '../../utils/cpf-util';
+import formatarCep from '../../utils/cep-util';
 
 registerLocale('pt', pt);
 
@@ -21,7 +23,7 @@ function Checkout(props) {
     const schema = yup.object({
         email: yup.string().email().required(),
         nomeCompleto: yup.string().required().min(5),
-        cpf: yup.string().required().min(14).max(14),
+        cpf: yup.string().required().min(14).max(14).test('cpf-valido', 'CPF invalido', (cpf) => validarCpf(cpf)),
         endereco: yup.string().min(5).required(),
         cidade: yup.string().required(),
         estado: yup.string().required(),
@@ -144,7 +146,10 @@ function Checkout(props) {
                                     name="cpf"
                                     data-testid="txt-cpf"
                                     values={values.cpf}
-                                    onChange={handleChange}
+                                    onChange={e => {
+                                        e.currentTarget.value = formatarCpf(e.currentTarget.value);
+                                        handleChange(e);
+                                    }}
                                     isValid={touched.cpf && !errors.cpf}
                                     isInvalid={touched.cpf && !!errors.cpf} />
                                 <Form.Control.Feedback type="invalid">Digite um CPF válido </Form.Control.Feedback>
@@ -211,7 +216,10 @@ function Checkout(props) {
                                     name="cep"
                                     data-testid="txt-cep"
                                     value={values.cep}
-                                    onChange={handleChange}
+                                    onChange={e => {
+                                        e.currentTarget.value = formatarCep(e.currentTarget.value);
+                                        handleChange(e);
+                                    }}
                                     isValid={touched.cep && !errors.cep}
                                     isInvalid={touched.cep && !!errors.cep} />
                                 <Form.Control.Feedback type="invalid">Digite o seu CEP</Form.Control.Feedback>
