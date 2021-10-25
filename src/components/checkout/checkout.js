@@ -70,7 +70,7 @@ function Checkout(props) {
                     <Col sm={9}>
                         <Form.Control as="select" name="cidade" data-testid="cidade">
                             <option value="">Selecione uma cidade</option>
-                            <ListarCidades estado={'RJ'} />
+                            <ListarCidades estado={''} />
                         </Form.Control>
                         <Form.Control.Feedback type="invalid">Selecione uma cidade</Form.Control.Feedback>
                     </Col>
